@@ -7,6 +7,9 @@ Then press button below top right and plug into PC and:
 
 sudo bootloadHID/bootloadHID.2012-12-08/commandline/bootloadHID -r jj50_archetype_mico.hex
 
+## chimera ergo 42
+In order to put it into bootloader mode, simply press the button labeled "R" on the receiver.
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
