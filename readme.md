@@ -1,3 +1,12 @@
+# Flashing
+
+## JJ50
+make jj50:archetype_mico
+
+Then press button below top right and plug into PC and:
+
+sudo bootloadHID/bootloadHID.2012-12-08/commandline/bootloadHID -r jj50_archetype_mico.hex
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
