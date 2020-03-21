@@ -31,6 +31,75 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _PLACEHOLDER 5
 #define _FPAD 6
 
+enum custom_keycodes {
+  MYRGB_TG = SAFE_RANGE
+};
+
+bool rgbinit = true;
+bool rgbon = true;
+
+const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {1,5,5}; //only using the first one
+
+void keyboard_post_init_user(void) {
+  rgblight_enable_noeeprom();
+  led_set_user(host_keyboard_leds());
+}
+
+uint32_t layer_state_set_user(uint32_t state) {
+  switch (biton32(state)) {
+    case _FPAD:
+      rgblight_sethsv_noeeprom(240,255,255);
+      rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+      break;
+    case _NUMS:
+      rgblight_sethsv_noeeprom(0,255,255);
+      rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+      break;
+    case _FN:
+      rgblight_sethsv_noeeprom(0,255,255);
+      rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+      break;
+    default: //_DEFLT
+      rgblight_sethsv_noeeprom(0,0,255);
+      rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+      break;
+  }
+
+  return state;
+}
+
+void led_set_user(uint8_t usb_led) {
+  if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_ALTERNATING);
+  } else {
+    layer_state_set_user(layer_state);
+  }
+}
+
+void myrgb_toggle(void) {
+  if (rgbon) {
+    rgblight_disable_noeeprom();
+    rgbon = false;
+  } else {
+    rgblight_enable_noeeprom();
+    layer_state_set_user(layer_state);
+    led_set_user(host_keyboard_leds());
+    rgbon = true;
+  }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch(keycode) {
+    case MYRGB_TG:
+      if (record->event.pressed) {
+        myrgb_toggle();
+      }
+      return false;
+    default:
+      return true;
+  }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT( \
@@ -53,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |           |
-        KC_LCTL,      KC_LGUI,     KC_LALT,    KC_DEL,     KC_SPC,LT(_NUMS, KC_BSPC),LT(_FPAD,KC_ENT),TG(_FN),TG(_NUMS),KC_RALT,   KC_RGUI,   KC_RCTL \
+          KC_LCTL,    KC_LGUI,     KC_LALT,    KC_DEL,     KC_SPC,LT(_NUMS, KC_BSPC),LT(_FPAD,KC_ENT),TG(_FN),_______,KC_RALT,   KC_RGUI,     KC_RCTL \
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+'
     ),
