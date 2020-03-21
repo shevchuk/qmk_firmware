@@ -45,6 +45,7 @@ void keyboard_post_init_user(void) {
   led_set_user(host_keyboard_leds());
 }
 
+// use http://colorizer.org/ to convert from RGB to HSV
 uint32_t layer_state_set_user(uint32_t state) {
   switch (biton32(state)) {
     case _FPAD:
@@ -52,7 +53,7 @@ uint32_t layer_state_set_user(uint32_t state) {
       rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
       break;
     case _NUMS:
-      rgblight_sethsv_noeeprom(0,255,255);
+      rgblight_sethsv_noeeprom(50,255,255);
       rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
       break;
     case _FN:
@@ -60,7 +61,7 @@ uint32_t layer_state_set_user(uint32_t state) {
       rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
       break;
     default: //_DEFLT
-      rgblight_sethsv_noeeprom(0,0,255);
+      rgblight_sethsv_noeeprom(190,255,255);
       rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
       break;
   }
@@ -114,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |           |
-           KC_ESC,      KC_A,      KC_S,        KC_D,      KC_F,       KC_G,        KC_H,       KC_J,      KC_K,       KC_L,      KC_SCLN,    KC_QUOT, \
+       LT(_NUMS,KC_ESC),KC_A,      KC_S,        KC_D,      KC_F,       KC_G,        KC_H,       KC_J,      KC_K,       KC_L,      KC_SCLN,LT(_FPAD,KC_QUOT), \
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |           |
@@ -122,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |           |
-          KC_LCTL,    KC_LGUI,     KC_LALT,    KC_DEL,     KC_SPC,LT(_NUMS, KC_BSPC),LT(_FPAD,KC_ENT),TG(_FN),_______,KC_RALT,   KC_RGUI,     KC_RCTL \
+          KC_LCTL,    KC_LGUI,     KC_LALT,    KC_DEL,     KC_SPC,    KC_BSPC ,    KC_ENT,     TG(_FN),   _______,    KC_RALT,   KC_RGUI,     KC_RCTL  \
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+'
     ),
