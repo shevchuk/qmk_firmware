@@ -49,11 +49,11 @@ void keyboard_post_init_user(void) {
 uint32_t layer_state_set_user(uint32_t state) {
   switch (biton32(state)) {
     case _FPAD:
-      rgblight_sethsv_noeeprom(240,255,255);
+      rgblight_sethsv_noeeprom(HSV_PINK);
       rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
       break;
     case _NUMS:
-      rgblight_sethsv_noeeprom(50,255,255);
+      rgblight_sethsv_noeeprom(HSV_ORANGE);
       rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
       break;
     case _FN:
@@ -61,7 +61,7 @@ uint32_t layer_state_set_user(uint32_t state) {
       rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
       break;
     default: //_DEFLT
-      rgblight_sethsv_noeeprom(190,255,255);
+      rgblight_sethsv_noeeprom(HSV_PURPLE);
       rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
       break;
   }
