@@ -32,7 +32,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _FPAD 6
 
 enum custom_keycodes {
-  MYRGB_TG = SAFE_RANGE
+  MYRGB_TG = SAFE_RANGE,
+  ASFT_TG
 };
 
 bool rgbinit = true;
@@ -94,6 +95,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MYRGB_TG:
       if (record->event.pressed) {
         myrgb_toggle();
+      }
+      return false;
+    case ASFT_TG:
+      if (record->event.pressed) {
+        autoshift_toggle();
       }
       return false;
     default:
@@ -259,7 +265,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       //|          |           |           |           |           |           |           |           |           |           |           |            |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |            |
-          _______,    BL_ON,      BL_INC,     RGB_TOG,    RGB_MOD,    _______,    _______,    _______,    _______,    _______,    _______,    _______,  \
+          _______,    BL_ON,      BL_INC,     RGB_TOG,    RGB_MOD,    _______,    _______,    _______,    _______,    _______,    _______,    ASFT_TG, \
       //|          |           |           |           |           |           |           |           |           |           |           |            |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |            |
