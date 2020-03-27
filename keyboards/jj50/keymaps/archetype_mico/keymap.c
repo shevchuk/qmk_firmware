@@ -33,6 +33,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _ARROWS 7
 #define _FKEYS 8
 
+#define KC_PWD M(0)
+
 enum custom_keycodes {
   MYRGB_TG = SAFE_RANGE,
   ASFT_TG
@@ -116,6 +118,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return true;
   }
 }
+
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  switch(id) {
+    /* include some kind of library or header */
+    case 0:
+      if (record->event.pressed) {
+        SEND_STRING("<secret>");
+        return MACRO( T(RIGHT), END);
+      }
+      break;
+  }
+  return MACRO_NONE;
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -228,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |           |
-          _______,    _______,   KC_LEFT,     KC_DOWN,    KC_RIGHT,   _______,    _______,   _______,    _______,    _______,    _______,    _______,  \
+          _______,    _______,   KC_LEFT,     KC_DOWN,    KC_RIGHT,   _______,    _______,   _______,    _______,    _______,     KC_PWD,    _______,  \
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+'
       //|          |           |           |           |           |           |           |           |           |           |           |           |
