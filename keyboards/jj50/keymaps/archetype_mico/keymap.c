@@ -156,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+|
       //|          |           |           |           |           |           |           |           |           |           |           |           |
-       KC_LCTL,    KC_LGUI,   KC_LALT,LT(_FKEYS, KC_DEL), KC_SPC,   KC_BSPC, LT(_ARROWS, KC_ENT),     TG(_FPAD),   _______,    KC_RALT,   KC_RGUI,     KC_RCTL \
+       KC_LCTL,    KC_LGUI,   KC_LALT,LT(_FKEYS, KC_DEL), KC_SPC,   KC_BSPC, LT(_ARROWS, KC_ENT), LT(_FPAD,KC_MINS), _______, KC_RALT,   KC_RGUI,     KC_RCTL \
       //|          |           |           |           |           |           |           |           |           |           |           |           |
       //,----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+'
     ),
