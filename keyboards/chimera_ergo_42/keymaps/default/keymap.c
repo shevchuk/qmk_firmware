@@ -17,7 +17,7 @@ enum chimera_ergo_42_layers
    _MACROS
   };
 
-#define KC_NMPD LT(_NUMPAD, KC_CAPS)
+#define KC_CHAR LT(_NUMCHARS, KC_CAPS)
 #define KC_SSYM LT(_SYMS, KC_SPC)
 #define KC_CTLZ CTL_T(KC_Z)
 #define KC_CTLS CTL_T(KC_SLSH)
@@ -27,7 +27,7 @@ enum chimera_ergo_42_layers
 #define KC_SFTX LSFT_T(KC_X)
 #define KC_ALSF MT(MOD_LALT | MOD_LSFT, KC_F4)
 
-#define KC_TBCH LT(_NUMCHARS, KC_TAB)
+#define KC_TBNP LT(_NUMPAD, KC_TAB)
 #define KC_FBTN LT(_FBUTTONS, KC_F12)
 #define KC_MESC LT(_MACROS, KC_ESC)
 #define KC_PWD  M(0)
@@ -50,11 +50,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----.     ,----+----+----+----+----+----.
      MESC, Q  , W  , E  , R  , T  ,       Y  , U  , I  , O  , P  ,BSLS,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
-     TBCH, A  , S  , D  , F  , G  ,       H  , J  , K  , L  ,SCLN,QUOT,
+     TBNP, A  , S  , D  , F  , G  ,       H  , J  , K  , L  ,SCLN,QUOT,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
      FBTN,CTLZ,SFTX,ALTC, V  , B  ,       N  , M  ,ALCM,SFTD,CTLS,ALSF,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
-                    TAB ,SSYM,BSPC,      ENT ,NMPD,FBTN
+                    TAB ,SSYM,BSPC,      ENT ,CHAR,FBTN
   // \------------------+----+----/      \---+----+----+--------------/
   ),
 
@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----.     ,----+----+----+----+----+----.
          ,    ,    ,    ,    ,    ,      SLSH, 7  , 8  , 9  ,ASTR,    ,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,      MINS, 4  , 5  , 6  ,PLUS,    ,
+         ,    ,    ,    ,    ,    ,      PLUS, 4  , 5  , 6  , 0  ,    ,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,          , 1  , 2  , 3  ,0   ,    ,
+         ,    ,    ,    ,    ,    ,      MINS, 1  , 2  , 3  ,DOT ,    ,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
-                        ,    ,    ,      DOT ,    ,
+                        ,    ,    ,       LT , GT , EQL
   // \------------------+----+----/      \---+----+----+--------------/
   ),
 
@@ -86,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----.     ,----+----+----+----+----+----.
          ,    ,    ,    ,    ,    ,          , F7 , F8 , F9 ,F12 ,    ,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,          , F4 , F5 , F6 ,F11 ,    ,
+         ,    ,    ,    ,    ,    ,          , F4 , F5 , F6 ,F10 ,    ,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,          , F1 , F2 , F3 ,F10 ,    ,
+         ,    ,    ,    ,    ,    ,          , F1 , F2 , F3 ,F11 ,    ,
   //|----+----+----+----+----+----|     |----+----+----+----+----+----|
                         ,    ,    ,          ,    ,
   // \------------------+----+----/      \---+----+----+--------------/
