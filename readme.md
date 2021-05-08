@@ -10,6 +10,13 @@ sudo bootloadHID/bootloadHID.2012-12-08/commandline/bootloadHID -r jj50_archetyp
 ## chimera ergo 42
 In order to put it into bootloader mode, simply press the button labeled "R" on the receiver.
 
+## ergodone
+make ergodone:default_mico
+
+use cli tool tkg-toolkit (sits above qmk-firmware repo):
+
+../tkg-toolkit/linux/bin/hid_bootloader_cli -mmcu=atmega32u4 ergodone_default_mico.hex
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
