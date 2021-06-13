@@ -15,6 +15,8 @@ make ergodone:default_mico
 
 use cli tool tkg-toolkit (sits above qmk-firmware repo):
 
+sudo ../tkg-toolkit/linux/bin/hid_bootloader_cli -w -v bootloader_cli -mmcu=atmega32u4 ergodone_erovia.hex
+
 ../tkg-toolkit/linux/bin/hid_bootloader_cli -mmcu=atmega32u4 ergodone_default_mico.hex
 
 # Quantum Mechanical Keyboard Firmware
